@@ -32,7 +32,12 @@ class main
    $this->html .= htmlTags::heading("Compare $chdate with $tar");
    $this->html .= stringFunctions::compare($chdate,$tar);
    $this->html .= stringFunctions::printthisarr($input,true);
-   $this->html .= htmltags::hrline();
+   $this->html .= htmlTags::hrline();
+   //3
+   $this->html .= htmlTags::heading("Search for / and return position");
+   $this->html .= stringFunctions::search($chdate);
+   $this->html .= stringFunctions::printthisarr($input,true);
+   $this->html .= htmlTags::hrline(); 
    }
 
 
@@ -80,7 +85,22 @@ class stringFunctions
 	else 
 	return "Oops";
   }
+//3
+  static public function search($input)
+  {
+  $char="/";
+  $positions = array();
+  $pos = -1;
+  while (($pos = strpos($input, $char, $pos+1)) !== false) {
+      $positions[] = $pos;
+      }
 
+      $result = implode(' ', $positions);
+
+      return $result;
+  }
+ 
+ 
 }
 
 ?>
