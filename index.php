@@ -34,10 +34,19 @@ class main
    $this->html .= stringFunctions::printthisarr($input,true);
    $this->html .= htmlTags::hrline();
    //3
-   $this->html .= htmlTags::heading("Search for / and return position");
+   $this->html .= htmlTags::heading("Search for / in $chdate and return position");
    $this->html .= stringFunctions::search($chdate);
    $this->html .= stringFunctions::printthisarr($input,true);
-   $this->html .= htmlTags::hrline(); 
+   $this->html .= htmlTags::hrline();
+   //4
+   $this->html .= htmlTags::heading("Count of words in $chdate");
+   $this->html .= stringFunctions::count($chdate);
+   $this->html .= stringFunctions::printthisarr($input,true);
+   $this->html .= htmlTags::hrline();
+   //5
+    $this->html .= htmlTags::heading("Length of string $chdate");
+    $this->html .= stringFunctions::length($chdate);
+    $this->html .= htmlTags::hrline();
    }
 
 
@@ -99,8 +108,20 @@ class stringFunctions
 
       return $result;
   }
- 
- 
+//4
+  static public function count($input)
+  {
+    $nofw= explode("/",$input);
+    return sizeof($nofw);
+    //list words
+    foreach($nofw as $word)
+    return $word;
+  }
+//5
+  static public function length($input)
+  {
+   return strlen($input);
+  } 
 }
 
 ?>
